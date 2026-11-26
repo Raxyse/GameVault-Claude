@@ -21,7 +21,7 @@ Then open <http://localhost:8080>.
 | Hero | Headline, search form, popular-genre shortcuts, featured artwork (opens details) |
 | Trending | 12 game cards with cover, title, genre, year, rating and hover effects |
 | Search & filter | Title search (accent-insensitive), genre chips, sort by trending / rating / year / title |
-| Details | Native `<dialog>` with artwork, genre, year, rating, description and collection buttons |
+| Details | Native `<dialog>`: framed cover poster, genre + platform badges, rating score, release date/year, developer, publisher, description, Library / Wishlist / Favorites buttons, contextual "Back to …" button (Esc, ✕ and outside-click also close) |
 | Collections | Favorites (heart), Library and Wishlist; persisted in `localStorage`, synced across tabs |
 | Resilience | Image failure falls back to a generated title card; storage failure falls back to memory |
 
@@ -67,7 +67,8 @@ docs/
 ## Adding a game
 
 1. Add an entry to `js/data/games.js` (`id`, `title`, `genre`, `year`, `rating`, `developer`,
-   `description`, `palette`, `motif`).
+   `releaseDate` (ISO, must match `year`), `publisher`, `platforms` (array), `description`,
+   `palette`, `motif`).
 2. Run `node docs/generate-covers.mjs` to create `assets/img/covers/<id>.svg`
    (or drop in your own image at that path).
 
@@ -75,7 +76,7 @@ New genres automatically appear as filter chips.
 
 ## Notes
 
-- Ratings and descriptions are illustrative demo data; there is no external API yet.
+- Ratings, descriptions and publisher/platform details are illustrative demo catalog data; there is no external API yet.
 - Cover art is original and generated locally; game titles belong to their respective owners.
 - LocalStorage key: `gamevault:v1` → `{ favorites: [], library: [], wishlist: [] }` (game ids).
   Unknown ids and corrupt data are discarded on load.

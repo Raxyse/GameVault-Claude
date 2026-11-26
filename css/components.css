@@ -609,7 +609,8 @@
 /* ---------- Modal (native <dialog>) ---------- */
 
 .modal {
-  width: min(940px, calc(100% - 24px));
+  --tint: #8b5cf6; /* set per game in modal.js */
+  width: min(1000px, calc(100% - 24px));
   max-width: none;
   max-height: calc(100dvh - 24px);
   padding: 0;
@@ -618,7 +619,8 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(600px 300px at 100% 0, rgba(139, 92, 246, 0.2), transparent 70%),
+    radial-gradient(640px 360px at 100% 0, color-mix(in srgb, var(--tint) 34%, transparent), transparent 70%),
+    radial-gradient(520px 420px at 0 100%, color-mix(in srgb, var(--tint) 20%, transparent), transparent 70%),
     var(--surface-solid);
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(139, 92, 246, 0.25);
 }
@@ -659,56 +661,125 @@
   z-index: 5;
 }
 
+/* Cover shown uncropped as a framed poster; it stays in view while details scroll */
 .modal__media {
   position: relative;
-  aspect-ratio: 2 / 3;
-  align-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 8px 28px 28px;
 }
 
-.modal__media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent 70%, var(--surface-solid));
+.modal__media .art {
+  position: sticky;
+  top: 28px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius);
+  box-shadow:
+    0 30px 60px -24px rgba(0, 0, 0, 0.85),
+    0 0 70px -12px color-mix(in srgb, var(--tint) 60%, transparent),
+    0 0 0 1px rgba(255, 255, 255, 0.14);
 }
 
 .modal__body {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  padding: clamp(24px, 4vw, 44px) clamp(20px, 4vw, 40px) clamp(24px, 4vw, 40px) 8px;
+  align-items: stretch;
+  gap: 20px;
+  min-width: 0;
+  padding: clamp(20px, 3.4vw, 34px) clamp(20px, 4vw, 40px) clamp(22px, 3.4vw, 30px) 8px;
+}
+
+.back-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px 0 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--text-muted);
+  background: rgba(148, 163, 255, 0.07);
+  border: 1px solid var(--border);
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.back-btn:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: rgba(148, 163, 255, 0.16);
+}
+
+.back-btn .icon {
+  transition: transform 0.25s var(--ease);
+}
+
+.back-btn:hover .icon {
+  transform: translateX(-3px);
+}
+
+.modal__head {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
 }
 
 .modal__title {
-  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
-  font-weight: 750;
-  line-height: 1.1;
-  padding-right: 44px;
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  font-weight: 780;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
-.modal__meta {
+/* Rating */
+.score {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  background: rgba(148, 163, 255, 0.07);
+  border: 1px solid var(--border);
 }
 
-.modal__meta dt {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.score__value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-family: var(--font-display);
+}
+
+.score__value strong {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.score__max {
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-dim);
 }
 
-.modal__meta dd {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 2px;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
+.score__bar {
+  display: grid;
+  flex: 1;
+  gap: 8px;
+  min-width: 0;
+}
+
+.score__verdict {
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--electric);
 }
 
 .modal__star {
@@ -717,7 +788,7 @@
 
 .meter {
   width: 100%;
-  height: 6px;
+  height: 8px;
   overflow: hidden;
   border-radius: 999px;
   background: rgba(148, 163, 255, 0.14);
@@ -731,18 +802,80 @@
   transition: width 0.7s var(--ease);
 }
 
+/* Facts grid */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.facts__item {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(148, 163, 255, 0.05);
+  border: 1px solid var(--border);
+}
+
+.facts dt,
+.modal__label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.facts dd {
+  margin-top: 3px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.modal__section {
+  display: grid;
+  gap: 10px;
+}
+
+.badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag--platform {
+  padding: 4px 12px;
+  color: #9fd8ff;
+  background: rgba(46, 168, 255, 0.12);
+  border-color: rgba(46, 168, 255, 0.35);
+}
+
 .modal__desc {
+  max-width: 62ch;
   color: var(--text-muted);
   font-size: 1.02rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .modal__actions {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
   gap: 10px;
-  margin-top: auto;
-  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.modal__actions .action-btn--labeled {
+  display: inline-flex;
+  justify-content: center;
+  padding: 0 12px;
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+
+.modal__note {
+  font-size: 0.78rem;
+  color: var(--text-dim);
 }
 
 /* ---------- Toast ---------- */

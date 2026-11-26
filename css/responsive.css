@@ -132,24 +132,55 @@
     grid-template-columns: 1fr;
   }
 
+  /* Full-bleed key art banner */
   .modal__media {
-    aspect-ratio: 16 / 10;
+    display: block;
+    align-self: start;
+    padding: 0;
+    aspect-ratio: 4 / 3;
   }
 
+  .modal__media .art {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    aspect-ratio: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Show the key art only; the cover's own title text sits lower and is already in the heading */
   .modal__media .art img {
-    object-position: center 28%;
+    object-position: center 6%;
   }
 
   .modal__media::after {
-    background: linear-gradient(180deg, transparent 60%, var(--surface-solid));
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 55%, var(--surface-solid));
   }
 
   .modal__body {
-    padding: 4px 20px 24px;
+    padding: 0 20px 24px;
   }
 
-  .modal__actions > * {
-    flex: 1 1 100%;
+  .back-btn {
+    margin-top: -4px;
+  }
+
+  .score {
+    gap: 14px;
+    padding: 12px 14px;
+  }
+
+  .score__value strong {
+    font-size: 2rem;
+  }
+
+  .modal__actions {
+    grid-template-columns: 1fr;
   }
 
   .site-footer__inner {
@@ -159,6 +190,15 @@
 }
 
 @media (max-width: 380px) {
+  .score {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .score__bar {
+    flex-basis: 100%;
+  }
+
   .game-grid {
     grid-template-columns: 1fr;
   }

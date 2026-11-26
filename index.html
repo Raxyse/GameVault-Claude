@@ -209,21 +209,46 @@
       </button>
       <div class="modal__media" data-modal-media></div>
       <div class="modal__body">
-        <p class="tag" data-modal-genre></p>
-        <h2 class="modal__title" id="modal-title" data-modal-title></h2>
-        <dl class="modal__meta">
-          <div>
-            <dt>Released</dt>
-            <dd data-modal-year></dd>
+        <button class="back-btn" type="button" data-modal-back>
+          <span data-icon="arrow-left" data-icon-size="16" aria-hidden="true"></span>
+          <span data-modal-back-label>Back to Discover</span>
+        </button>
+
+        <div class="modal__head">
+          <p class="tag" data-modal-genre></p>
+          <h2 class="modal__title" id="modal-title" data-modal-title></h2>
+        </div>
+
+        <div class="score" role="group" aria-label="Rating">
+          <p class="score__value">
+            <span class="modal__star" data-icon="star" data-icon-size="22" aria-hidden="true"></span>
+            <strong data-modal-rating></strong><span class="score__max">/ 10</span>
+          </p>
+          <div class="score__bar">
+            <div class="meter" aria-hidden="true"><span data-modal-meter></span></div>
+            <p class="score__verdict" data-modal-verdict></p>
           </div>
-          <div>
-            <dt>Rating</dt>
-            <dd><span class="modal__star" data-icon="star" data-icon-size="16" aria-hidden="true"></span> <span data-modal-rating></span></dd>
-          </div>
+        </div>
+
+        <dl class="facts">
+          <div class="facts__item"><dt>Release date</dt><dd data-modal-date></dd></div>
+          <div class="facts__item"><dt>Release year</dt><dd data-modal-year></dd></div>
+          <div class="facts__item"><dt>Developer</dt><dd data-modal-developer></dd></div>
+          <div class="facts__item"><dt>Publisher</dt><dd data-modal-publisher></dd></div>
         </dl>
-        <div class="meter" aria-hidden="true"><span data-modal-meter></span></div>
-        <p class="modal__desc" id="modal-desc" data-modal-desc></p>
-        <div class="modal__actions" data-modal-actions></div>
+
+        <section class="modal__section" aria-labelledby="modal-platforms-label">
+          <h3 class="modal__label" id="modal-platforms-label">Platforms</h3>
+          <ul class="badge-list" data-modal-platforms></ul>
+        </section>
+
+        <section class="modal__section" aria-labelledby="modal-about-label">
+          <h3 class="modal__label" id="modal-about-label">About this game</h3>
+          <p class="modal__desc" id="modal-desc" data-modal-desc></p>
+        </section>
+
+        <div class="modal__actions" role="group" aria-label="Add to your collection" data-modal-actions></div>
+        <p class="modal__note">Ratings and catalog details are demo data for GameVault.</p>
       </div>
     </div>
   </dialog>

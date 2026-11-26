@@ -7,6 +7,7 @@ const PATHS = {
   library:
     '<rect x="3.5" y="4" width="4" height="16" rx="1"/><rect x="9.5" y="4" width="4" height="16" rx="1"/><path d="m15.8 6.2 3.5-1 3 14.2-3.5 1Z"/>',
   close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  'arrow-left': '<path d="M19 12H5M12 19l-7-7 7-7"/>',
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9Z"/>',
