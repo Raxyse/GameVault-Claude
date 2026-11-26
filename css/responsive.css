@@ -1,0 +1,186 @@
+/* ==========================================================================
+   GameVault — responsive rules + reduced motion
+   ========================================================================== */
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1020px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    text-align: center;
+  }
+
+  .hero__lead,
+  .search-field--lg {
+    margin-inline: auto;
+  }
+
+  .hero__genres {
+    justify-content: center;
+  }
+
+  .hero__title .accent {
+    margin-inline: auto;
+  }
+
+  .hero__visual {
+    min-height: 420px;
+    max-width: 640px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- Mobile navigation ---------- */
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: grid;
+  }
+
+  .site-nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 12px var(--gutter) 24px;
+    background: rgba(7, 11, 23, 0.97);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.8);
+  }
+
+  .site-header.is-open .site-nav {
+    display: block;
+    animation: nav-in 0.3s var(--ease);
+  }
+
+  .site-nav__list {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .site-nav__link {
+    width: 100%;
+    min-height: 48px;
+    padding-inline: 18px;
+    font-size: 1.05rem;
+    border-radius: var(--radius-sm);
+  }
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .game-card__body {
+    padding: 12px;
+  }
+
+  .game-card__title {
+    font-size: 0.95rem;
+  }
+
+  .game-card__rating {
+    top: 8px;
+    left: 8px;
+  }
+
+  .game-card__actions {
+    top: 8px;
+    right: 8px;
+    gap: 6px;
+  }
+
+  .action-btn--icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .toolbar__row {
+    flex-direction: column;
+  }
+
+  .select-wrap,
+  .select {
+    width: 100%;
+  }
+
+  .hero__visual {
+    min-height: 340px;
+  }
+
+  .hero__caption {
+    font-size: 0.8rem;
+    padding: 8px 14px;
+  }
+
+  .hero__caption-meta {
+    display: none;
+  }
+
+  /* Modal becomes a stacked sheet */
+  .modal__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .modal__media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .modal__media .art img {
+    object-position: center 28%;
+  }
+
+  .modal__media::after {
+    background: linear-gradient(180deg, transparent 60%, var(--surface-solid));
+  }
+
+  .modal__body {
+    padding: 4px 20px 24px;
+  }
+
+  .modal__actions > * {
+    flex: 1 1 100%;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 380px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-field--lg .btn {
+    padding-inline: 16px;
+  }
+}
+
+/* Touch devices: no hover, so keep the card actions visible (see components.css) */
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

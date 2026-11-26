@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" font-family="Sora, 'Segoe UI', Arial, sans-serif" role="img" aria-label="Cyberpunk 2077 cover art">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#12062a"/><stop offset=".55" stop-color="#c9bd10"/><stop offset="1" stop-color="#12062a"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".37" r=".55"><stop offset="0" stop-color="#ff2e93" stop-opacity=".85"/><stop offset="1" stop-color="#ff2e93" stop-opacity="0"/></radialGradient>
+<linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset=".42" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".85"/></linearGradient>
+</defs>
+<rect width="600" height="900" fill="url(#bg)"/>
+<rect width="600" height="900" fill="url(#glow)"/>
+<g transform="rotate(-20 300 450)"><rect x="-220" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.3"/><rect x="-128" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.16"/><rect x="-36" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.3"/><rect x="56" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.16"/><rect x="148" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.3"/><rect x="240" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.16"/><rect x="332" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.3"/><rect x="424" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.16"/><rect x="516" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.3"/><rect x="608" y="-140" width="38" height="1200" fill="#ff2e93" opacity="0.16"/></g><circle cx="300" cy="330" r="110" fill="none" stroke="#ff2e93" stroke-width="6" opacity=".9"/>
+<rect width="600" height="900" fill="url(#shade)"/>
+<rect x="40" y="634" width="44" height="4" rx="2" fill="#ff2e93"/>
+<text x="40" y="680" font-size="19" font-weight="700" fill="#ff2e93" letter-spacing="4">ACTION RPG</text>
+<text x="40" y="746" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1.5">Cyberpunk</text><text x="40" y="806" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1.5">2077</text>
+<text x="40" y="862" font-size="20" font-weight="600" fill="#fff" opacity=".7" letter-spacing="2">2020</text>
+<rect x="1.5" y="1.5" width="597" height="897" rx="0" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="3"/>
+</svg>

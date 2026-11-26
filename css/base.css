@@ -1,0 +1,222 @@
+/* ==========================================================================
+   GameVault — base: design tokens, reset, typography, utilities
+   ========================================================================== */
+
+:root {
+  /* Surfaces: deep navy + dark charcoal */
+  --navy-950: #050814;
+  --navy-900: #070b17;
+  --navy-800: #0e1530;
+  --charcoal-800: #14181f;
+  --surface: rgba(18, 25, 48, 0.72);
+  --surface-solid: #111a33;
+
+  /* Borders */
+  --border: rgba(148, 163, 255, 0.14);
+  --border-strong: rgba(148, 163, 255, 0.28);
+
+  /* Text */
+  --text: #e8ecf8;
+  --text-muted: #9aa6c6;
+  --text-dim: #7e8aac;
+
+  /* Accents: purple + electric blue */
+  --purple: #8b5cf6;
+  --blue: #3b82f6;
+  --electric: #2ea8ff;
+  --gold: #fbbf24;
+  --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #2ea8ff 100%);
+
+  /* Shape + depth */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --shadow-1: 0 18px 40px -16px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 0 1px rgba(139, 92, 246, 0.35), 0 22px 50px -14px rgba(88, 101, 255, 0.55);
+
+  /* Type (system stacks keep the site fast and dependency-free) */
+  --font-sans: "Inter", "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Sora", "Segoe UI Variable Display", "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Layout */
+  --header-h: 72px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --container: 1200px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-color: #2b3566 transparent;
+}
+
+html.is-locked {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--navy-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, p, dl, dd {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--electric);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.45);
+}
+
+/* ---------- Utilities ---------- */
+
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 650;
+  color: #fff;
+  background: var(--accent-gradient);
+  transform: translateY(-200%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.noscript {
+  position: fixed;
+  inset: auto 16px 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-solid);
+  border: 1px solid var(--border-strong);
+}
+
+/* ---------- Ambient background ---------- */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 700px at 85% -10%, rgba(88, 64, 200, 0.3), transparent 60%),
+    radial-gradient(900px 600px at -10% 25%, rgba(36, 99, 235, 0.22), transparent 60%),
+    linear-gradient(180deg, var(--navy-900) 0%, var(--navy-950) 60%, #06070d 100%);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.42;
+  animation: drift 24s ease-in-out infinite alternate;
+}
+
+.orb--purple {
+  top: 6%;
+  right: -8%;
+  width: 520px;
+  height: 520px;
+  background: #6d3df0;
+}
+
+.orb--blue {
+  bottom: -12%;
+  left: -10%;
+  width: 480px;
+  height: 480px;
+  background: #1d6fe8;
+  animation-delay: -9s;
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(-70px, 46px, 0) scale(1.1);
+  }
+}

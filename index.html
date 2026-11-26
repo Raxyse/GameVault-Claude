@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameVault — Discover. Collect. Play.</title>
+  <meta name="description" content="GameVault is a modern video game catalog. Discover great games, collect favorites, and build your library and wishlist.">
+  <meta name="theme-color" content="#070b17">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb--purple"></span>
+    <span class="orb orb--blue"></span>
+  </div>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="#home" aria-label="GameVault — back to top">
+        <img src="assets/img/logo.svg" alt="" width="36" height="36">
+        <span class="brand__name">Game<span>Vault</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary" data-site-nav>
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#home" data-nav-link="home">Home</a></li>
+          <li><a class="site-nav__link" href="#discover" data-nav-link="discover">Discover</a></li>
+          <li>
+            <a class="site-nav__link" href="#library" data-nav-link="library">
+              Library <span class="badge" data-count="library" data-hide-zero hidden>0</span>
+            </a>
+          </li>
+          <li>
+            <a class="site-nav__link" href="#wishlist" data-nav-link="wishlist">
+              Wishlist <span class="badge" data-count="wishlist" data-hide-zero hidden>0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" data-nav-toggle>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span> Your personal game catalog</p>
+          <h1 class="hero__title" id="hero-title">
+            <span>Discover.</span>
+            <span class="accent">Collect.</span>
+            <span>Play.</span>
+          </h1>
+          <p class="hero__lead">
+            Explore standout games from across every genre, keep your favorites close, and build a
+            library and wishlist that’s entirely yours — saved right in your browser.
+          </p>
+
+          <form class="search-field search-field--lg" role="search" data-hero-search>
+            <label class="visually-hidden" for="hero-search-input">Search games by title</label>
+            <span class="search-field__icon" data-icon="search" aria-hidden="true"></span>
+            <input id="hero-search-input" type="search" name="q" placeholder="Search for a game…" autocomplete="off" enterkeyhint="search">
+            <button class="btn btn--primary" type="submit">Search</button>
+          </form>
+
+          <div class="hero__genres" data-hero-genres aria-label="Popular genres"></div>
+        </div>
+
+        <div class="hero__visual" data-hero-art role="group" aria-label="Featured games"></div>
+      </div>
+    </section>
+
+    <!-- DISCOVER / TRENDING -->
+    <section class="section" id="discover" aria-labelledby="discover-title">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow">Discover</p>
+            <h2 id="discover-title">Trending Games</h2>
+          </div>
+          <p class="section__meta" data-result-count aria-live="polite"></p>
+        </header>
+
+        <form class="toolbar" data-toolbar aria-label="Search and filter games">
+          <div class="toolbar__row">
+            <div class="search-field">
+              <label class="visually-hidden" for="catalog-search">Search games by title</label>
+              <span class="search-field__icon" data-icon="search" aria-hidden="true"></span>
+              <input id="catalog-search" type="search" placeholder="Search by title…" autocomplete="off" data-filter-search>
+            </div>
+            <div class="select-wrap">
+              <label class="visually-hidden" for="catalog-sort">Sort games</label>
+              <select class="select" id="catalog-sort" data-filter-sort></select>
+            </div>
+          </div>
+          <div class="toolbar__chips">
+            <div class="chip-row" role="group" aria-label="Filter by genre" data-genre-chips></div>
+            <button class="btn btn--ghost btn--sm" type="button" data-filter-reset hidden>Clear filters</button>
+          </div>
+        </form>
+
+        <ul class="game-grid" data-grid="discover" aria-label="Games"></ul>
+
+        <div class="empty-state" data-empty="discover" hidden>
+          <span class="empty-state__icon" data-icon="search" data-icon-size="28" aria-hidden="true"></span>
+          <h3>No games found</h3>
+          <p>Nothing matches your search. Try a different title or clear your filters.</p>
+          <button class="btn btn--primary" type="button" data-empty-reset>Clear filters</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIBRARY + FAVORITES -->
+    <section class="section section--collection" id="library" aria-labelledby="library-title">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow">Collection</p>
+            <h2 id="library-title">Your Library</h2>
+          </div>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Library views">
+          <button class="tab" type="button" role="tab" id="tab-library" aria-controls="panel-library" aria-selected="true" data-tab="library">
+            Library <span class="tab__count" data-count="library">0</span>
+          </button>
+          <button class="tab" type="button" role="tab" id="tab-favorites" aria-controls="panel-favorites" aria-selected="false" tabindex="-1" data-tab="favorites">
+            Favorites <span class="tab__count" data-count="favorites">0</span>
+          </button>
+        </div>
+
+        <div class="panel" id="panel-library" role="tabpanel" aria-labelledby="tab-library" tabindex="-1">
+          <ul class="game-grid" data-grid="library" aria-label="Games in your library"></ul>
+          <div class="empty-state" data-empty="library">
+            <span class="empty-state__icon" data-icon="library" data-icon-size="28" aria-hidden="true"></span>
+            <h3>Your library is empty</h3>
+            <p>Add games you own or play from Discover and they’ll show up here.</p>
+            <a class="btn btn--primary" href="#discover">Browse games</a>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-favorites" role="tabpanel" aria-labelledby="tab-favorites" tabindex="-1" hidden>
+          <ul class="game-grid" data-grid="favorites" aria-label="Your favorite games"></ul>
+          <div class="empty-state" data-empty="favorites">
+            <span class="empty-state__icon" data-icon="heart" data-icon-size="28" aria-hidden="true"></span>
+            <h3>No favorites yet</h3>
+            <p>Tap the heart on any game to pin it here.</p>
+            <a class="btn btn--primary" href="#discover">Find favorites</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WISHLIST -->
+    <section class="section section--collection" id="wishlist" aria-labelledby="wishlist-title">
+      <div class="container">
+        <header class="section__head">
+          <div>
+            <p class="eyebrow">Collection</p>
+            <h2 id="wishlist-title">Your Wishlist</h2>
+          </div>
+        </header>
+
+        <div class="panel" id="panel-wishlist" tabindex="-1">
+          <ul class="game-grid" data-grid="wishlist" aria-label="Games on your wishlist"></ul>
+          <div class="empty-state" data-empty="wishlist">
+            <span class="empty-state__icon" data-icon="bookmark" data-icon-size="28" aria-hidden="true"></span>
+            <h3>Your wishlist is empty</h3>
+            <p>Bookmark games you want to play next and keep track of them here.</p>
+            <a class="btn btn--primary" href="#discover">Start exploring</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="brand" href="#home" aria-label="GameVault — back to top">
+          <img src="assets/img/logo.svg" alt="" width="30" height="30">
+          <span class="brand__name">Game<span>Vault</span></span>
+        </a>
+        <p class="site-footer__tagline">Discover. Collect. Play.</p>
+      </div>
+      <p class="site-footer__legal">
+        GameVault is a demo project. Game titles and artwork belong to their respective owners.
+        Your collections are stored only in this browser.
+      </p>
+    </div>
+  </footer>
+
+  <!-- GAME DETAILS -->
+  <dialog class="modal" id="game-modal" aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <div class="modal__panel">
+      <button class="icon-btn modal__close" type="button" data-modal-close aria-label="Close game details">
+        <span data-icon="close" aria-hidden="true"></span>
+      </button>
+      <div class="modal__media" data-modal-media></div>
+      <div class="modal__body">
+        <p class="tag" data-modal-genre></p>
+        <h2 class="modal__title" id="modal-title" data-modal-title></h2>
+        <dl class="modal__meta">
+          <div>
+            <dt>Released</dt>
+            <dd data-modal-year></dd>
+          </div>
+          <div>
+            <dt>Rating</dt>
+            <dd><span class="modal__star" data-icon="star" data-icon-size="16" aria-hidden="true"></span> <span data-modal-rating></span></dd>
+          </div>
+        </dl>
+        <div class="meter" aria-hidden="true"><span data-modal-meter></span></div>
+        <p class="modal__desc" id="modal-desc" data-modal-desc></p>
+        <div class="modal__actions" data-modal-actions></div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="toast-region" popover="manual" aria-live="polite" data-toast-region></div>
+
+  <noscript>
+    <p class="noscript">GameVault needs JavaScript to load the game catalog. Please enable it and reload.</p>
+  </noscript>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

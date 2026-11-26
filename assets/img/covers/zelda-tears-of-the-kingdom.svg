@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900" font-family="Sora, 'Segoe UI', Arial, sans-serif" role="img" aria-label="The Legend of Zelda: Tears of the Kingdom cover art">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06263a"/><stop offset=".55" stop-color="#1fa3a0"/><stop offset="1" stop-color="#06263a"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".37" r=".55"><stop offset="0" stop-color="#c9ff8a" stop-opacity=".85"/><stop offset="1" stop-color="#c9ff8a" stop-opacity="0"/></radialGradient>
+<linearGradient id="shade" x1="0" y1="0" x2="0" y2="1"><stop offset=".42" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".85"/></linearGradient>
+</defs>
+<rect width="600" height="900" fill="url(#bg)"/>
+<rect width="600" height="900" fill="url(#glow)"/>
+<circle cx="400" cy="230" r="74" fill="#c9ff8a" opacity=".9"/><path d="M0 560 L110 380 L200 500 L320 300 L440 480 L520 400 L600 520 L600 900 L0 900Z" fill="#06263a" opacity=".55"/><path d="M0 640 L140 480 L250 600 L380 440 L500 590 L600 500 L600 900 L0 900Z" fill="#06263a" opacity=".85"/>
+<rect width="600" height="900" fill="url(#shade)"/>
+<rect x="40" y="514" width="44" height="4" rx="2" fill="#c9ff8a"/>
+<text x="40" y="560" font-size="19" font-weight="700" fill="#c9ff8a" letter-spacing="4">ADVENTURE</text>
+<text x="40" y="626" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1.5">The Legend of</text><text x="40" y="686" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1.5">Zelda: Tears</text><text x="40" y="746" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1.5">of the</text><text x="40" y="806" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1.5">Kingdom</text>
+<text x="40" y="862" font-size="20" font-weight="600" fill="#fff" opacity=".7" letter-spacing="2">2023</text>
+<rect x="1.5" y="1.5" width="597" height="897" rx="0" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="3"/>
+</svg>
