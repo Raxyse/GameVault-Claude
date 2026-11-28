@@ -109,9 +109,59 @@
     flex-direction: column;
   }
 
+  /* Filters + Sort share one row */
+  .toolbar__controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .filters-btn,
   .select-wrap,
   .select {
     width: 100%;
+  }
+
+  /* Tighter padding so "Sort: Trending" fits beside the Filters button */
+  .toolbar__controls .select {
+    padding: 0 34px 0 16px;
+    background-position: right 12px center;
+  }
+
+  .filters-btn {
+    padding: 0 14px;
+  }
+
+  /* Filters drawer becomes a bottom sheet */
+  .drawer {
+    width: 100%;
+    height: auto;
+    max-height: 92dvh;
+    margin: auto 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: 0 -30px 80px -20px rgba(0, 0, 0, 0.85);
+  }
+
+  .drawer[open] {
+    animation-name: sheet-in;
+  }
+
+  .drawer__panel {
+    height: auto;
+    max-height: 92dvh;
+  }
+
+  .drawer__head {
+    padding: 18px 18px 12px;
+  }
+
+  .drawer__body {
+    padding: 0 18px 8px;
+  }
+
+  .drawer__foot {
+    padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
   }
 
   .hero__visual {
@@ -190,6 +240,10 @@
 }
 
 @media (max-width: 380px) {
+  .toolbar__controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .score {
     flex-wrap: wrap;
     gap: 10px;

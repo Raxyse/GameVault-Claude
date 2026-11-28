@@ -99,14 +99,21 @@
               <span class="search-field__icon" data-icon="search" aria-hidden="true"></span>
               <input id="catalog-search" type="search" placeholder="Search by title…" autocomplete="off" data-filter-search>
             </div>
-            <div class="select-wrap">
-              <label class="visually-hidden" for="catalog-sort">Sort games</label>
-              <select class="select" id="catalog-sort" data-filter-sort></select>
+            <div class="toolbar__controls">
+              <button class="filters-btn" type="button" aria-haspopup="dialog" aria-controls="filters-panel" data-filters-open>
+                <span data-icon="sliders" data-icon-size="18" aria-hidden="true"></span>
+                <span>Filters</span>
+                <span class="badge" data-filters-count hidden>0</span>
+              </button>
+              <div class="select-wrap">
+                <label class="visually-hidden" for="catalog-sort">Sort games</label>
+                <select class="select" id="catalog-sort" data-filter-sort></select>
+              </div>
             </div>
           </div>
-          <div class="toolbar__chips">
-            <div class="chip-row" role="group" aria-label="Filter by genre" data-genre-chips></div>
-            <button class="btn btn--ghost btn--sm" type="button" data-filter-reset hidden>Clear filters</button>
+          <div class="active-filters" data-active-filters aria-label="Active filters" hidden>
+            <div class="active-filters__pills" data-active-pills></div>
+            <button class="btn btn--ghost btn--sm" type="button" data-filter-reset>Clear filters</button>
           </div>
         </form>
 
@@ -251,6 +258,75 @@
         <p class="modal__note">Ratings and catalog details are demo data for GameVault.</p>
       </div>
     </div>
+  </dialog>
+
+  <!-- DISCOVER FILTERS (drawer on desktop/tablet, bottom sheet on mobile) -->
+  <dialog class="drawer" id="filters-panel" aria-labelledby="filters-title">
+    <form class="drawer__panel" id="filters-form" novalidate>
+      <header class="drawer__head">
+        <div>
+          <p class="eyebrow">Discover</p>
+          <h2 id="filters-title">Filters</h2>
+        </div>
+        <button class="icon-btn" type="button" data-filters-close aria-label="Close filters">
+          <span data-icon="close" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="drawer__body">
+        <fieldset class="filter-group">
+          <legend>Genre</legend>
+          <div class="chip-row" data-genre-options></div>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Platform</legend>
+          <div class="chip-row" data-platform-options></div>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Rating</legend>
+          <div class="range-fields">
+            <label class="field">
+              <span>Min</span>
+              <input type="number" name="ratingMin" inputmode="decimal" step="0.1" min="0" max="10" aria-describedby="rating-hint rating-error">
+            </label>
+            <span class="range-fields__dash" aria-hidden="true">–</span>
+            <label class="field">
+              <span>Max</span>
+              <input type="number" name="ratingMax" inputmode="decimal" step="0.1" min="0" max="10" aria-describedby="rating-hint rating-error">
+            </label>
+          </div>
+          <p class="field-hint" id="rating-hint" data-hint="rating"></p>
+          <p class="field-error" id="rating-error" role="alert" data-error="rating" hidden></p>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Release year</legend>
+          <div class="range-fields">
+            <label class="field">
+              <span>From</span>
+              <input type="number" name="yearMin" inputmode="numeric" step="1" min="1950" max="2100" aria-describedby="year-hint year-error">
+            </label>
+            <span class="range-fields__dash" aria-hidden="true">–</span>
+            <label class="field">
+              <span>To</span>
+              <input type="number" name="yearMax" inputmode="numeric" step="1" min="1950" max="2100" aria-describedby="year-hint year-error">
+            </label>
+          </div>
+          <p class="field-hint" id="year-hint" data-hint="year"></p>
+          <p class="field-error" id="year-error" role="alert" data-error="year" hidden></p>
+        </fieldset>
+      </div>
+
+      <footer class="drawer__foot">
+        <p class="drawer__count" data-filters-preview aria-live="polite"></p>
+        <div class="drawer__actions">
+          <button class="btn btn--ghost" type="button" data-filters-reset>Reset</button>
+          <button class="btn btn--primary" type="submit" data-filters-apply>Apply Filters</button>
+        </div>
+      </footer>
+    </form>
   </dialog>
 
   <div class="toast-region" popover="manual" aria-live="polite" data-toast-region></div>
